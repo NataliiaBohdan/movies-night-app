@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Homepage from "../src/pages/Homepage";
+import MyList from "../src/pages/MyList";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { WatchlistProvider } from "./context/WatchlistContext";
+import Error from "./pages/Error";
+import MovieDetailPage from "./pages/MovieDetailPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WatchlistProvider>
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/mylist" element={<MyList />} />
+          <Route path="/movies/:id" element={<MovieDetailPage />} />
+          <Route
+            path="*"
+            element={<Error error={{ message: "Page not found" }} />}
+          />
+        </Routes>
+      </ErrorBoundary>
+    </WatchlistProvider>
   );
 }
 
