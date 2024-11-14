@@ -87,7 +87,7 @@ function MovieDetailPage() {
           {movie && (
             <LinkButton
               to="/mylist"
-              className="text-black bg-yellow w-max font-bold border-2 border-solid border-yellow inline-block px-4 py-2 hover:bg-amber-500 active:bg-amber-600"
+              className="inline-block  text-black bg-yellow py-2 px-4 font-bold text-center hover:bg-amber-500 active:bg-amber-600"
               onClick={() => {
                 addToWatchlist(movie);
               }}
